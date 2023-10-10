@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import 'ui/styles/globals.css'
+import { ThemeProvider } from 'ui/provider'
 
 export const metadata: Metadata = {
   title: 'GEM App',
@@ -13,7 +14,16 @@ export default function RootLayout({
 }): JSX.Element {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
